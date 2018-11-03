@@ -21,23 +21,23 @@ namespace StudentsFromFile
     {
       // TODO:
       // Error Handle if File Name Does Not Exists
-      StudentsList Students = StudentsList.CreateFromFile(new StreamReader(@"g:\test.txt"));
+      StudentsList Students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
 
       PrintStudentsSortedBy(Students, "Surname", new SortStudentsBySurname());
       PrintStudentsSortedBy(Students, "Age", new SortStudentsByAge());
-      PrintStudentsSortedBy(Students, "Phone",(s1, s2) => s1.Phone.CompareTo(s2.Phone));
+      PrintStudentsSortedBy(Students, "Phone", (s1, s2) => s1.Phone.CompareTo(s2.Phone));
 
       Console.ReadKey();
     }
 
     static void PrintStudentsSortedBy(StudentsList students, string compareField, IComparer<Student> comparer)
     {
-      students.Sort(comparer);      PrintStudents(students, compareField);
+      students.Sort(comparer); PrintStudents(students, compareField);
     }
 
     static void PrintStudentsSortedBy(StudentsList students, string compareField, Comparison<Student> comparison)
     {
-      students.Sort(comparison);    PrintStudents(students, compareField);
+      students.Sort(comparison); PrintStudents(students, compareField);
     }
 
     static void PrintStudents(StudentsList students, string compareField)
