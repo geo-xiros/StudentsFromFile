@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.IO;
+using System.Collections.Generic;
 
 /*
 Create a simple program that reads students from the file Lab3.txt file and stores them in a list.
@@ -14,29 +15,35 @@ e.g.First Name, Last Name, Age, Height, Tuition, Date, PhoneLuana, Rayos,22,1.61
 
 namespace StudentsFromFile
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
 
-            StudentsList students = StudentsList.CreateFromFile(new StreamReader(@"g:\test.txt"));
+      StudentsList students = StudentsList.CreateFromFile(new StreamReader(@"g:\test.txt"));
 
-            PrintStudentsSortedBy(students, "Surname", (s1, s2) => s1.Surname.CompareTo(s2.Surname));
+      PrintStudentsSortedBy(students, "Surname", new SortStudentsBySurname());
+      PrintStudentsSortedBy(students, "Age", new SortStudentsByAge());
+      PrintStudentsSortedBy(students, "Phone",(s1, s2) => s1.Phone.CompareTo(s2.Phone));
 
-            PrintStudentsSortedBy(students, "Age", (s1, s2) => s1.Age.CompareTo(s2.Age));
-
-            PrintStudentsSortedBy(students, "Phone",(s1, s2) => s1.Phone.CompareTo(s2.Phone));
-
-            Console.ReadKey();
-        }
-        static void PrintStudentsSortedBy(StudentsList students, string compareField, Comparison<Student> comparable)
-        {
-            Console.WriteLine("Sort by " + compareField);
-
-            students.Sort(comparable);
-
-            foreach (Student student in students)
-                Console.WriteLine(student);
-        }
+      Console.ReadKey();
     }
+
+    static void PrintStudentsSortedBy(StudentsList students, string compareField, IComparer<Student> comparer)
+    {
+      students.Sort(comparer);      PrintStudents(students, compareField);
+    }
+
+    static void PrintStudentsSortedBy(StudentsList students, string compareField, Comparison<Student> comparison)
+    {
+      students.Sort(comparison);    PrintStudents(students, compareField);
+    }
+
+    static void PrintStudents(StudentsList students, string compareField)
+    {
+      Console.WriteLine("Sort by " + compareField);
+      foreach (Student student in students)
+        Console.WriteLine(student);
+    }
+  }
 }

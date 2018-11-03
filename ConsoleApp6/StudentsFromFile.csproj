@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortStudentsByAge.cs" />
+    <Compile Include="SortStudentsBySurname.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentsList.cs" />
   </ItemGroup>

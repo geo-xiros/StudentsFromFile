@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace StudentsFromFile
 {
     enum Conduct { Poor, Good, Excellent };
-    class Student:IComparable<Student>
+    class Student:IComparable<Student>, IComparer<Student>
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -18,7 +18,12 @@ namespace StudentsFromFile
         public String Phone { get; set; }
         public Conduct Conduct { get; set; }
 
-        public int CompareTo(Student student)
+    public int Compare(Student x, Student y)
+    {
+      return x.CompareTo(y);
+    }
+
+    public int CompareTo(Student student)
         {
             // A null value means that this object is greater.
             if (student == null)
