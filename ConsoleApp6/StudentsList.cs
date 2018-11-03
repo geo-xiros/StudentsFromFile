@@ -16,7 +16,9 @@ namespace StudentsFromFile
             while ((line = file.ReadLine()) != null)
             {
                 string[] fields = line.Split(',');
-                
+
+                // TODO:
+                // Error Handle in Field Parsing
                 studentList.Add(new Student()
                 {
                     Name = fields[0].Trim(),
