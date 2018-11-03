@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -16,6 +16,8 @@ namespace StudentsFromFile
             while ((line = file.ReadLine()) != null)
             {
                 string[] fields = line.Split(',');
+                // TODO:
+                // Trim fields from left right spaces
 
                 studentList.Add(new Student()
                 {
