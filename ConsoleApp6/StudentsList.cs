@@ -8,32 +8,32 @@ namespace StudentsFromFile
     {
         static public StudentsList CreateFromFile(StreamReader file)
         {
-            StudentsList studentList = new StudentsList();
+            StudentsList StudentList = new StudentsList();
 
-            string line;
+            string Line;
 
             // Read From File And Create Student Object Then Add The Object To List
-            while ((line = file.ReadLine()) != null)
+            while ((Line = file.ReadLine()) != null)
             {
-                string[] fields = line.Split(',');
+                string[] Fields = Line.Split(',');
 
                 // TODO:
                 // Error Handle in Field Parsing
-                studentList.Add(new Student()
+                StudentList.Add(new Student()
                 {
-                    Name = fields[0].Trim(),
-                    Surname = fields[1].Trim(),
-                    Age = byte.Parse(fields[2]),
-                    Height = float.Parse(fields[3]),
-                    Tuition = decimal.Parse(fields[4]),
-                    Date = DateTime.Parse(fields[5]),
-                    Phone = fields[6].Trim()
+                    Name = Fields[0].Trim(),
+                    Surname = Fields[1].Trim(),
+                    Age = byte.Parse(Fields[2]),
+                    Height = float.Parse(Fields[3]),
+                    Tuition = decimal.Parse(Fields[4]),
+                    Date = DateTime.Parse(Fields[5]),
+                    Phone = Fields[6].Trim()
                 });
             }
 
             file.Close();
 
-            return studentList;
+            return StudentList;
         }
 
     }

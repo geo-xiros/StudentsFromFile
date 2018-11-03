@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentsFromFile
 {
@@ -18,9 +15,9 @@ namespace StudentsFromFile
         public String Phone { get; set; }
         public Conduct Conduct { get; set; }
 
-    public int Compare(Student x, Student y)
+    public int Compare(Student s1, Student s2)
     {
-      return x.CompareTo(y);
+      return s1.CompareTo(s2);
     }
 
     public int CompareTo(Student student)

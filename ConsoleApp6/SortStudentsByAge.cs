@@ -1,16 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StudentsFromFile
 {
   class SortStudentsByAge : IComparer<Student>
   {
-    public int Compare(Student x, Student y)
+    public int Compare(Student s1, Student s2)
     {
-      return x.Age.CompareTo(y.Age);
+      return s1.Age.CompareTo(s2.Age);
     }
   }
 }
