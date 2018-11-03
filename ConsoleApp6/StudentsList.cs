@@ -16,18 +16,16 @@ namespace StudentsFromFile
             while ((line = file.ReadLine()) != null)
             {
                 string[] fields = line.Split(',');
-                // TODO:
-                // Trim fields from left right spaces
-
+                
                 studentList.Add(new Student()
                 {
-                    Name = fields[0],
-                    Surname = fields[1],
+                    Name = fields[0].Trim(),
+                    Surname = fields[1].Trim(),
                     Age = byte.Parse(fields[2]),
                     Height = float.Parse(fields[3]),
                     Tuition = decimal.Parse(fields[4]),
                     Date = DateTime.Parse(fields[5]),
-                    Phone = fields[6]
+                    Phone = fields[6].Trim()
                 });
             }
 
