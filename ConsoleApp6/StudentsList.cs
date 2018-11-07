@@ -4,37 +4,49 @@ using System.IO;
 
 namespace StudentsFromFile
 {
-  class StudentsList : List<Student>
-  {
-    static public StudentsList StudentsListFactory(StreamReader file)
+    class StudentsList : List<Student>
     {
-      StudentsList StudentList = new StudentsList();
-
-      string Line;
-
-      // Read From File And Create Student Object Then Add The Object To List
-      while ((Line = file.ReadLine()) != null)
-      {
-        string[] Fields = Line.Split(',');
-
-        // TODO:
-        // Error Handle in Field Parsing
-        StudentList.Add(new Student()
+        static public StudentsList StudentsListFactory(StreamReader file)
         {
-          Name = Fields[0].Trim(),
-          Surname = Fields[1].Trim(),
-          Age = byte.Parse(Fields[2]),
-          Height = float.Parse(Fields[3]),
-          Tuition = decimal.Parse(Fields[4]),
-          Date = DateTime.Parse(Fields[5]),
-          Phone = Fields[6].Trim()
-        });
-      }
+            StudentsList StudentList = new StudentsList();
 
-      file.Close();
+            string Line;
 
-      return StudentList;
+            // Read From File And Create Student Object Then Add The Object To List
+            while ((Line = file.ReadLine()) != null)
+            {
+                string[] Fields = Line.Split(',');
+
+                // TODO:
+                // Error Handle in Field Parsing
+                StudentList.Add(new Student()
+                {
+                    Name = Fields[0].Trim(),
+                    Surname = Fields[1].Trim(),
+                    Age = byte.Parse(Fields[2]),
+                    Height = float.Parse(Fields[3]),
+                    Tuition = decimal.Parse(Fields[4]),
+                    Date = DateTime.Parse(Fields[5]),
+                    Phone = Fields[6].Trim()
+                });
+            }
+
+            file.Close();
+
+            return StudentList;
+        }
+        static public int ShortByName(Student s1, Student s2)
+        {
+            return s1.Name.CompareTo(s2.Name);
+        }
+        static public int ShortByAge(Student s1, Student s2)
+        {
+            return s1.Age.CompareTo(s2.Age);
+        }
+        static public int ShortByPhone(Student s1, Student s2)
+        {
+            return s1.Phone.CompareTo(s2.Phone);
+        }
+
     }
-
-  }
 }

@@ -15,36 +15,31 @@ e.g.First Name, Last Name, Age, Height, Tuition, Date, PhoneLuana, Rayos,22,1.61
 
 namespace StudentsFromFile
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      // TODO:
-      // Error Handle if File Name Does Not Exists
-      StudentsList Students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
+        static void Main(string[] args)
+        {
+            // TODO:
+            // Error Handle if File Name Does Not Exists
+            StudentsList Students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
 
-      PrintStudentsSortedBy(Students, "Surname", new SortStudentsBySurname());
-      PrintStudentsSortedBy(Students, "Age", new SortStudentsByAge());
-      PrintStudentsSortedBy(Students, "Phone", (s1, s2) => s1.Phone.CompareTo(s2.Phone));
+            PrintStudentsSortedBy(Students, "Surname", StudentsList.ShortByName);
+            PrintStudentsSortedBy(Students, "Age", StudentsList.ShortByAge);
+            PrintStudentsSortedBy(Students, "Phone", StudentsList.ShortByPhone);
 
-      Console.ReadKey();
+            Console.ReadKey();
+        }
+
+        static void PrintStudentsSortedBy(StudentsList students, string compareField, Comparison<Student> comparison)
+        {
+            students.Sort(comparison); PrintStudents(students, compareField);
+        }
+
+        static void PrintStudents(StudentsList students, string compareField)
+        {
+            Console.WriteLine("Sort by " + compareField);
+            foreach (Student student in students)
+                Console.WriteLine(student);
+        }
     }
-
-    static void PrintStudentsSortedBy(StudentsList students, string compareField, IComparer<Student> comparer)
-    {
-      students.Sort(comparer); PrintStudents(students, compareField);
-    }
-
-    static void PrintStudentsSortedBy(StudentsList students, string compareField, Comparison<Student> comparison)
-    {
-      students.Sort(comparison); PrintStudents(students, compareField);
-    }
-
-    static void PrintStudents(StudentsList students, string compareField)
-    {
-      Console.WriteLine("Sort by " + compareField);
-      foreach (Student student in students)
-        Console.WriteLine(student);
-    }
-  }
 }
