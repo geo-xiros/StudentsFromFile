@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 /*
 Create a simple program that reads students from the file Lab3.txt file and stores them in a list.
@@ -19,9 +20,32 @@ namespace StudentsFromFile
     {
         static void Main(string[] args)
         {
+
+            string xmlStudents = @"<StudentsList>
+                                    <Student>
+                                        <Name>George</Name>
+                                        <Surname>Xiros</Surname>
+                                        <Age>42</Age>
+                                        <Height>184</Height>
+                                        <Tuition>2200</Tuition>
+                                        <Date>08/10/2018</Date>
+                                        <Phone>6976900103</Phone>
+                                    </Student>
+                                    <Student>
+                                        <Name>Nikos</Name>
+                                        <Surname>Diakos</Surname>
+                                        <Age>32</Age>
+                                        <Height>170</Height>
+                                        <Tuition>2500</Tuition>
+                                        <Date>09/10/2018 12:00:00</Date>
+                                        <Phone>6879595888</Phone>
+                                    </Student>
+                                </StudentsList>";
+
             try
             {
-                StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"C:\Users\George\Documents\cs-projects\StudentsFromFile\test.txt"));
+                StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"G:\test.txt"));
+                //StudentsList students = StudentsList.StudentsListFactory(xmlStudents);
 
                 PrintStudentsSortedBy(students, "Surname", StudentsList.ShortByName);
                 PrintStudentsSortedBy(students, "Age", StudentsList.ShortByAge);

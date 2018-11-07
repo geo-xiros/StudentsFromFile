@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace StudentsFromFile
 {
-    enum Conduct { Poor, Good, Excellent };
-    class Student
+    public enum Conduct { Poor, Good, Excellent };
+
+    public class Student
     {
         public string Name { get; set; }
         public string Surname { get; set; }
