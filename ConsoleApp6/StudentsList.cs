@@ -12,7 +12,7 @@ namespace StudentsFromFile
 
             string line;
             string headers = file.ReadLine();
-
+           
             // Read From File And Create Student Object Then Add The Object To List
             while ((line = file.ReadLine()) != null)
             {

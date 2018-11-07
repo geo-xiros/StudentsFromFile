@@ -19,13 +19,19 @@ namespace StudentsFromFile
     {
         static void Main(string[] args)
         {
-            // TODO:
-            // Error Handle if File Name Does Not Exists
-            StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"C:\Users\George\Documents\cs-projects\StudentsFromFile\test.txt"));
+            try
+            {
+                StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"C:\Users\George\Documents\cs-projects\StudentsFromFile\test.txt"));
 
-            PrintStudentsSortedBy(students, "Surname", StudentsList.ShortByName);
-            PrintStudentsSortedBy(students, "Age", StudentsList.ShortByAge);
-            PrintStudentsSortedBy(students, "Phone", StudentsList.ShortByPhone);
+                PrintStudentsSortedBy(students, "Surname", StudentsList.ShortByName);
+                PrintStudentsSortedBy(students, "Age", StudentsList.ShortByAge);
+                PrintStudentsSortedBy(students, "Phone", StudentsList.ShortByPhone);
+
+            }
+            catch (DirectoryNotFoundException e) { Console.WriteLine(e.Message); }
+            catch (FileNotFoundException e) { Console.WriteLine(e.Message); }
+            catch (FieldAccessException e) { Console.WriteLine(e.Message); }
+            catch (Exception e) { Console.WriteLine(e.Message); }
 
             Console.ReadKey();
         }
