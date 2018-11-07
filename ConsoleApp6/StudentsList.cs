@@ -10,12 +10,13 @@ namespace StudentsFromFile
         {
             StudentsList studentList = new StudentsList();
 
-            string Line;
+            string line;
+            string headers = file.ReadLine();
 
             // Read From File And Create Student Object Then Add The Object To List
-            while ((Line = file.ReadLine()) != null)
+            while ((line = file.ReadLine()) != null)
             {
-                string[] fields = Line.Split(',');
+                string[] fields = line.Split(',');
 
                 // TODO:
                 // Error Handle in Field Parsing

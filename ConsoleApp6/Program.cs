@@ -21,7 +21,7 @@ namespace StudentsFromFile
         {
             // TODO:
             // Error Handle if File Name Does Not Exists
-            StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
+            StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"C:\Users\George\Documents\cs-projects\StudentsFromFile\test.txt"));
 
             PrintStudentsSortedBy(students, "Surname", StudentsList.ShortByName);
             PrintStudentsSortedBy(students, "Age", StudentsList.ShortByAge);
