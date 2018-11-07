@@ -8,32 +8,32 @@ namespace StudentsFromFile
     {
         static public StudentsList StudentsListFactory(StreamReader file)
         {
-            StudentsList StudentList = new StudentsList();
+            StudentsList studentList = new StudentsList();
 
             string Line;
 
             // Read From File And Create Student Object Then Add The Object To List
             while ((Line = file.ReadLine()) != null)
             {
-                string[] Fields = Line.Split(',');
+                string[] fields = Line.Split(',');
 
                 // TODO:
                 // Error Handle in Field Parsing
-                StudentList.Add(new Student()
+                studentList.Add(new Student()
                 {
-                    Name = Fields[0].Trim(),
-                    Surname = Fields[1].Trim(),
-                    Age = byte.Parse(Fields[2]),
-                    Height = float.Parse(Fields[3]),
-                    Tuition = decimal.Parse(Fields[4]),
-                    Date = DateTime.Parse(Fields[5]),
-                    Phone = Fields[6].Trim()
+                    Name = fields[0].Trim(),
+                    Surname = fields[1].Trim(),
+                    Age = byte.Parse(fields[2]),
+                    Height = float.Parse(fields[3]),
+                    Tuition = decimal.Parse(fields[4]),
+                    Date = DateTime.Parse(fields[5]),
+                    Phone = fields[6].Trim()
                 });
             }
 
             file.Close();
 
-            return StudentList;
+            return studentList;
         }
         static public int ShortByName(Student s1, Student s2)
         {

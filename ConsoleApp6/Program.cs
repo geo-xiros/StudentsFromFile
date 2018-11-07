@@ -21,11 +21,11 @@ namespace StudentsFromFile
         {
             // TODO:
             // Error Handle if File Name Does Not Exists
-            StudentsList Students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
+            StudentsList students = StudentsList.StudentsListFactory(new StreamReader(@"g:\test.txt"));
 
-            PrintStudentsSortedBy(Students, "Surname", StudentsList.ShortByName);
-            PrintStudentsSortedBy(Students, "Age", StudentsList.ShortByAge);
-            PrintStudentsSortedBy(Students, "Phone", StudentsList.ShortByPhone);
+            PrintStudentsSortedBy(students, "Surname", StudentsList.ShortByName);
+            PrintStudentsSortedBy(students, "Age", StudentsList.ShortByAge);
+            PrintStudentsSortedBy(students, "Phone", StudentsList.ShortByPhone);
 
             Console.ReadKey();
         }
