@@ -1,0 +1,5 @@
+Phone,Name,Surname,Age,Tuition,Height,Date
+1234567,Luana, Rayos,22,1.61,2500,01/01/2018
+210xxx467,George, Xiros,42,1.84,2000,01/01/2018
+6976xxxxx3,Nick, Vlasopoulos,43,1.81,2200,02/01/2018
+55857755567,George, Lymperopoulos,27,1.75,2000,04/01/2018
